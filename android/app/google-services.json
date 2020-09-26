@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "206835834805",
+    "firebase_url": "https://freelance-kisan.firebaseio.com",
+    "project_id": "freelance-kisan",
+    "storage_bucket": "freelance-kisan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206835834805:android:e21f824ab66514d14883fc",
+        "android_client_info": {
+          "package_name": "com.geekyhermit.freelancekisan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206835834805-qfktja1e2u8oultul71usaa3fj12r0h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEv1kHiGqhedjqST3op-gN0G6FM3VIFUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206835834805-qfktja1e2u8oultul71usaa3fj12r0h4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
