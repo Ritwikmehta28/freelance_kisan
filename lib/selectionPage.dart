@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freelancekisan/AddNewLand.dart';
+import 'package:freelancekisan/SearchLand.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectionPage extends StatefulWidget {
@@ -10,6 +11,7 @@ class SelectionPage extends StatefulWidget {
 class _SelectionPageState extends State<SelectionPage> {
   final Color primaryColor = Color(0xff18203d);
 
+  //Project
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +67,10 @@ class _SelectionPageState extends State<SelectionPage> {
                 elevation: 0,
                 minWidth: double.maxFinite,
                 height: 50,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => Searchland()));
+                },
                 color: Colors.blue,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
