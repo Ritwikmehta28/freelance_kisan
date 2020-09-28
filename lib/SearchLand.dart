@@ -24,7 +24,6 @@ class SearchLand extends StatelessWidget {
             flex: 4,
             child: ListView.separated(itemBuilder: (context,index){
               return ListTile(
-                leading: Text(index.toString()),
                 title: Column(
 
                   children: [
@@ -32,9 +31,9 @@ class SearchLand extends StatelessWidget {
                       children: [
                         Expanded(child: Image(image: NetworkImage("https://www.pngitem.com/pimgs/m/3-34847_transparent-grass-background-png-land-background-png-png.png"),)),
                         Expanded(child:Center(
-                          child: Text(land[index].Location ,style: TextStyle(
+                          child: Text(land[index].Location.toUpperCase() ,style: TextStyle(
                             color: Colors.blue,
-                            fontSize: 18,
+                            fontSize: 30,
                             fontWeight: FontWeight.bold
                           ),),
                         ))
@@ -44,7 +43,7 @@ class SearchLand extends StatelessWidget {
                       leading: Text('Plot Size - ' , style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15
+                        fontSize: 20
                       ),),
                       title: Text(land[index].Plot_size.toString()),
                     ),
@@ -52,7 +51,7 @@ class SearchLand extends StatelessWidget {
                       leading: Text('Description - ', style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 15
+                          fontSize: 20
                       )),
                       title: Text(land[index].Description.toString()),
                     ),
@@ -60,7 +59,7 @@ class SearchLand extends StatelessWidget {
                       leading: Text('Soil Type - ', style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 15
+                          fontSize: 20
                       )),
                       title: Text(land[index].Soil_type.toString()),
                     ),
@@ -68,7 +67,7 @@ class SearchLand extends StatelessWidget {
                       leading: Text('Price - ', style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 15
+                          fontSize: 20
                       )),
                       title: Text(land[index].Price.toString()),
                     ),
@@ -76,10 +75,25 @@ class SearchLand extends StatelessWidget {
                       leading: Text('Contact No. - ', style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 15
+                          fontSize: 20
                       )),
                       title: Text(land[index].ContactInfo.toString()),
                     ),
+                    Center(
+                      child: FlatButton(
+                         child: Text('Proceed',style: TextStyle(
+                           color: Colors.white,
+                           fontSize: 12
+                         ),),
+                        onPressed: (){
+
+                        },
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+                    Divider(
+                      thickness: 5,
+                    )
                   ],
 
                 ),);
