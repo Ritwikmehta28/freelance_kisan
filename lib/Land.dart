@@ -7,8 +7,7 @@ class Land {
   String Location;
   String Description;
   String ContactInfo;
-
+  String Id;
   Land(
-    this.Plot_size,this.Price,this.Soil_type,this.Description,this.ContactInfo,this.Location
-      );
+    this.Plot_size,this.Price,this.Soil_type,this.Description,this.ContactInfo,this.Location,this.Id);
 }

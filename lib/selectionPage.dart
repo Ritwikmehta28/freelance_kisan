@@ -16,6 +16,8 @@ class _SelectionPageState extends State<SelectionPage> {
   FirebaseFirestore _db = FirebaseFirestore.instance;
   List<Land> land=[
   ];
+  List<Land> shownLand=[
+  ];
   Future<List<Land>> getData() async {
 
     await _db.collection('Plots').get().then((querysnapshot){
@@ -26,11 +28,39 @@ class _SelectionPageState extends State<SelectionPage> {
         int Price = element.data()['Price'];
         String Description = element.data()['Description'];
         String ContactInfo = element.data()['ContactInfo'];
-        print(Plot_size);
-        Land L = Land(Plot_size,Price,Soil_type,Description,ContactInfo,Location);
+        String Id= element.id.toString();
+        Land L = Land(Plot_size,Price,Soil_type,Description,ContactInfo,Location,Id);
         land.add(L);
       });
     });
+  }
+
+ List<Land> addNewData(){
+    List<Land> toshow=[
+      ];
+    int i=0;
+    while(i<land.length)
+      {
+        if(i<shownLand.length)
+          {
+            if(shownLand[i].Id == land[i].Id)
+              {
+                i++;
+              }
+            else
+              {
+                shownLand.add(land[i]);
+                toshow.add(land[i]);
+                i++;
+              }
+          }
+        else
+          {
+            shownLand.add(land[i]);
+            toshow.add(land[i]);
+          }
+      }
+      return toshow;
   }
   //Project
   @override
@@ -90,8 +120,9 @@ class _SelectionPageState extends State<SelectionPage> {
                 height: 50,
                 onPressed: () async{
                   await getData();
+                  List<Land> toshow = addNewData();
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => SearchLand(land)));
+                      context, MaterialPageRoute(builder: (_) => SearchLand(toshow)));
                 },
                 color: Colors.blue,
                 child: Row(
