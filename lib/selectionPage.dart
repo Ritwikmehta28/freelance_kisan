@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freelancekisan/AddNewLand.dart';
 import 'package:freelancekisan/SearchLand.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'Land.dart';
 
 class SelectionPage extends StatefulWidget {
   @override
@@ -10,7 +13,25 @@ class SelectionPage extends StatefulWidget {
 
 class _SelectionPageState extends State<SelectionPage> {
   final Color primaryColor = Color(0xff18203d);
+  FirebaseFirestore _db = FirebaseFirestore.instance;
+  List<Land> land=[
+  ];
+  Future<List<Land>> getData() async {
 
+    await _db.collection('Plots').get().then((querysnapshot){
+      querysnapshot.docs.forEach((element) {
+        int Plot_size = element.data()['Plot_size'];
+        String Location= element.data()['Location'].toString();
+        String Soil_type= element.data()['Soil_type'].toString();
+        int Price = element.data()['Price'];
+        String Description = element.data()['Description'];
+        String ContactInfo = element.data()['ContactInfo'];
+        print(Plot_size);
+        Land L = Land(Plot_size,Price,Soil_type,Description,ContactInfo,Location);
+        land.add(L);
+      });
+    });
+  }
   //Project
   @override
   Widget build(BuildContext context) {
@@ -67,9 +88,10 @@ class _SelectionPageState extends State<SelectionPage> {
                 elevation: 0,
                 minWidth: double.maxFinite,
                 height: 50,
-                onPressed: () {
+                onPressed: () async{
+                  await getData();
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => Searchland()));
+                      context, MaterialPageRoute(builder: (_) => SearchLand(land)));
                 },
                 color: Colors.blue,
                 child: Row(
